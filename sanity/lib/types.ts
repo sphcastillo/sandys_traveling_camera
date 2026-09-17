@@ -23,6 +23,7 @@ export type SanityImageValue = {
 export type QuoteValue = {
   text: string
   attribution?: string | null
+  image?: SanityImageValue | null
 }
 
 export type CountryStub = {

@@ -1,8 +1,9 @@
 # Sandy's Traveling Camera
 
 A travel photography site for Sandy, built on Next.js 16 with Sanity as the entire backend.
-The Studio is mounted inside the app at `/studio`, and `sanity.config.ts` stays at the repo
-root so it can also be served standalone on Vite for fast schema work.
+The Studio is mounted inside the app at `/studio`, with its package and configuration in `sanity/`.
+It can also be served standalone on Vite for fast schema work.
+The pnpm workspace installs both packages with one `pnpm install`.
 
 ## Getting started
 

@@ -1,0 +1,21 @@
+{
+  "name": "sandystravelingcamera-studio",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "typegen": "sanity schema extract && sanity typegen generate",
+    "seed": "sanity exec ../scripts/seed.ts --with-user-token",
+    "seed:reset": "sanity exec ../scripts/seed.ts --with-user-token -- --reset"
+  },
+  "dependencies": {
+    "@sanity/vision": "^6.14.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "sanity": "^6.14.1",
+    "styled-components": "^6.1.18"
+  }
+}

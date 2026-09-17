@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 /**
  * Turns Natural Earth's public-domain TopoJSON into a plain list of SVG path
  * strings, keyed by ISO 3166-1 numeric code.
@@ -40,15 +42,20 @@ const path = geoPath(projection)
 const round = (d: string) =>
   d.replace(/-?\d+\.\d+/g, (match) => String(Number(Number(match).toFixed(PRECISION))))
 
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '') || 'unknown'
+
 const entries = countries.features
   .map((item) => {
     const d = path(item)
     if (!d) return null
-    return {
-      id: String(item.id),
-      name: item.properties?.name ?? '',
-      d: round(d),
-    }
+    const name = item.properties?.name ?? ''
+    // Some Natural Earth features (Kosovo, N. Cyprus, Somaliland) have no ISO id.
+    const id = item.id != null && String(item.id) !== 'undefined' ? String(item.id) : slugify(name)
+    return { id, name, d: round(d) }
   })
   .filter((item): item is { id: string; name: string; d: string } => item !== null)
   .sort((a, b) => a.name.localeCompare(b.name))

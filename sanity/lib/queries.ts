@@ -98,7 +98,7 @@ export const SITE_SETTINGS_QUERY = defineQuery(`
     email,
     instagramUrl,
     footerNote,
-    quotes[]{ _key, text, attribution },
+    quotes[]{ _key, text, attribution, image ${IMAGE} },
     ogImage ${IMAGE}
   }
 `)
@@ -113,7 +113,7 @@ export const HOME_QUERY = defineQuery(`{
       eyebrow,
       headline,
       subhead,
-      quote{ text, attribution },
+      quote{ text, attribution, image ${IMAGE} },
       primaryCta{ label, href },
       secondaryCta{ label, href }
     },
@@ -139,7 +139,7 @@ export const HOME_QUERY = defineQuery(`{
     featuredDestinations{ title, intro },
     latestNotes{ title, intro },
     aboutTeaser{ title, text, ctaLabel, image ${IMAGE} },
-    quoteBands[]{ _key, text, attribution }
+    quoteBands[]{ _key, text, attribution, image ${IMAGE} }
   },
   "continents": *[_type == "continent"] | order(order asc) ${CONTINENT_SUMMARY},
   "featuredCountries": *[_type == "country" && featured == true]
@@ -271,7 +271,7 @@ export const ABOUT_QUERY = defineQuery(`
     inspiration{
       title,
       body,
-      quote{ text, attribution }
+      quote{ text, attribution, image ${IMAGE} }
     }
   }
 `)

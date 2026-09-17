@@ -596,8 +596,24 @@ async function main() {
         : undefined,
     },
     quoteBands: [
-      { _type: 'quote', _key: 'q1', text: 'Adventure is out there.', attribution: null },
-      { _type: 'quote', _key: 'q2', text: 'YOLO — you only live once.', attribution: null },
+      {
+        _type: 'quote',
+        _key: 'q1',
+        text: 'Adventure is out there.',
+        attribution: null,
+        image: assetByCountry.get('iceland')?.[2]
+          ? imageField(assetByCountry.get('iceland')![2], 'A wide landscape behind the quote.')
+          : undefined,
+      },
+      {
+        _type: 'quote',
+        _key: 'q2',
+        text: 'YOLO — you only live once.',
+        attribution: null,
+        image: assetByCountry.get('namibia')?.[4]
+          ? imageField(assetByCountry.get('namibia')![4], 'A wide landscape behind the quote.')
+          : undefined,
+      },
     ],
   } as IdentifiedDoc)
   console.log('  + home page')
@@ -644,6 +660,9 @@ async function main() {
         _type: 'quote',
         text: 'Life is either a daring adventure or nothing at all.',
         attribution: 'Helen Keller',
+        image: assetByCountry.get('peru')?.[1]
+          ? imageField(assetByCountry.get('peru')![1], 'A landscape behind the quote.')
+          : undefined,
       },
     },
   } as IdentifiedDoc)
