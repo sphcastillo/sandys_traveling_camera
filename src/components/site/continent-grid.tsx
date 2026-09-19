@@ -16,7 +16,7 @@ export function ContinentGrid({ continents, className }: ContinentGridProps) {
 
   return (
     <div className={cn('grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3', className)}>
-      {continents.map((continent, index) => (
+      {continents.map((continent) => (
         <Link
           key={continent._id}
           href={`/gallery/${continent.slug}`}
@@ -24,7 +24,7 @@ export function ContinentGrid({ continents, className }: ContinentGridProps) {
         >
           <SanityImage
             value={continent.coverImage}
-            aspect={index % 5 === 0 ? 'landscape' : 'tall'}
+            aspect="tall"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             imageClassName="transition-transform duration-[1200ms] ease-[var(--ease-soft)] group-hover:scale-[1.06]"
           />

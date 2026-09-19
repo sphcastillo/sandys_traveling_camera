@@ -19,7 +19,7 @@ const TONES = {
 
 export function Section({ id, className, tone = 'default', children }: SectionProps) {
   return (
-    <section id={id} className={cn('py-16 sm:py-24', TONES[tone], className)}>
+    <section id={id} className={cn('py-16', TONES[tone], className)}>
       {children}
     </section>
   )

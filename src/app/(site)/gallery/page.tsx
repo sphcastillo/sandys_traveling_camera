@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 
 export default async function GalleryPage() {
   const { data } = await sanityFetch({ query: GALLERY_QUERY })
-  const continents = (data as ContinentGallery[]).filter((continent) => continent.photoCount > 0)
+  const continents = data as ContinentGallery[]
+  const continentsWithPhotos = continents.filter((continent) => continent.photoCount > 0)
+  console.log(continents.map((continent) => continent.name))
 
   const totalPhotos = continents.reduce((sum, continent) => sum + continent.photoCount, 0)
 
@@ -40,7 +42,7 @@ export default async function GalleryPage() {
         </div>
       </Section>
 
-      {continents.map((continent, index) => (
+      {continentsWithPhotos.map((continent, index) => (
         <Section key={continent._id} tone={index % 2 === 0 ? 'meteor' : 'default'}>
           <div className="shell">
             <SectionHeader
